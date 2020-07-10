@@ -10,12 +10,16 @@
     });
 
     document.getElementById('enviar').addEventListener('click', getCant);
+    document.getElementById('reload').addEventListener('click',function(){
+        window.open("https://script.google.com/a/ifp.mx/macros/s/AKfycbyaWA8qOVA9bvjl8gpSMN4t3B9LRMD48Y0AGRLX/exec",'_top');
+        //google.script.run.doGet();
+    });
 
     function getCant(){
         var alumno = {};
         alumno.nombre = document.getElementById('alumno').value;
         if(alumno.nombre.length > 12){
-            console.log(alumno);
+            //console.log(alumno);
             google.script.run.withSuccessHandler(tabla).getCReportes(alumno);
         }
     }
@@ -25,26 +29,20 @@
         const arregloReportes = JSON.parse(stringReportes);
         //console.log(arregloReportes);
         arregloReportes.forEach(function(reporte){
-            //for(const dato in reporte){
-                /* console.log(reporte);
-                console.log(dato);*/
-                //var row = document.getElementById("myRow");
-                var table = document.getElementById("myTable");
-                var row = table.insertRow(1);
-                var desc = row.insertCell(0);
-                var aut = row.insertCell(1);
-                var type = row.insertCell(2);   
-                var date = row.insertCell(3);
-                var vin = row.insertCell(4);
-                desc.innerHTML = reporte[0];
-                aut.innerHTML = reporte[1];
-                type.innerHTML = reporte[2];
-                date.innerHTML = reporte[3];
-                vin.innerHTML = reporte[4];
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(1);
+            var desc = row.insertCell(0);
+            var aut = row.insertCell(1);
+            var type = row.insertCell(2);   
+            var date = row.insertCell(3);
+            var vin = row.insertCell(4);
+            desc.innerHTML = reporte[0];
+            aut.innerHTML = reporte[1];
+            type.innerHTML = reporte[2];
+            date.innerHTML = reporte[3];
+            vin.innerHTML = reporte[4];
                
-                //}
-            });
-        
+        });
     }
     
     function completarNombre(alumno){
