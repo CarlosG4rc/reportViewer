@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <?!= include ("style");?>
+    <title>Visualizar Reportes</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper blue darken-4">
+                <a href="#" class="brand-logo">Visualizar Reportes</a>
+                <a href="#" class="right"></a>
+                <a href="#"data-target="mobile-demo" class="sidenav-trigger" class="material-icons"></a>
+            </div>
+        </nav>
+    </header>
+    
+        <div class="row">
+            <div class ="col s12">
+                <div class="card-panel z-depth-2">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person</i>
+                            <input type="text" id="alumno">
+                            <label for="alumno">Nombre del alumno</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field center-align col s12">
+                            <button id = 'enviar' class="btn waves-effect waves-light red darken-2" type="submit" name="action">Ver reportes
+                            <i class="material-icons right">find_in_page</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table id="myTable">
+                            <tr id="myRow">
+                                <td>Descripción</td>
+                                <td>Autoridad</td>
+                                <td>Tipo</td>
+                                <td>Fecha</td>
+                                <td>Viculo</td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <footer class="page-footer blue darken-4 col s12" >
+        <div class="container white-text">
+        © 2020 Copyright Instituto Francisco Possenti
+        <a class="white-text right" href="#!" >Hecha con <i class="material-icons">favorite</i> y <i class="material-icons">code</i></a>
+        </div>
+    </footer>
+    <?!= include ("js");?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>

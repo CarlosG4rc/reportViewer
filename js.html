@@ -1,0 +1,55 @@
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        document.addEventListener('DOMContent',function(){
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenv.init(elems);
+        });
+        google.script.run.withSuccessHandler(completarNombre).completar();
+    });
+
+    document.getElementById('enviar').addEventListener('click', getCant);
+
+    function getCant(){
+        var alumno = {};
+        alumno.nombre = document.getElementById('alumno').value;
+        if(alumno.nombre.length > 12){
+            console.log(alumno);
+            google.script.run.withSuccessHandler(tabla).getCReportes(alumno);
+        }
+    }
+    
+    function tabla(stringReportes){
+        //console.log(JSON.parse(h));
+        const arregloReportes = JSON.parse(stringReportes);
+        //console.log(arregloReportes);
+        arregloReportes.forEach(function(reporte){
+            //for(const dato in reporte){
+                /* console.log(reporte);
+                console.log(dato);*/
+                //var row = document.getElementById("myRow");
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(1);
+                var desc = row.insertCell(0);
+                var aut = row.insertCell(1);
+                var type = row.insertCell(2);   
+                var date = row.insertCell(3);
+                var vin = row.insertCell(4);
+                desc.innerHTML = reporte[0];
+                aut.innerHTML = reporte[1];
+                type.innerHTML = reporte[2];
+                date.innerHTML = reporte[3];
+                vin.innerHTML = reporte[4];
+               
+                //}
+            });
+        
+    }
+    
+    function completarNombre(alumno){
+        var autoCompletar = document.getElementById('alumno');
+        var instances = M.Autocomplete.init(autoCompletar,{data : alumno});
+    }
+
+</script>
